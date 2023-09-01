@@ -36,6 +36,11 @@ const fs = require('fs');
 // }
 
 //deleting files
-fs.unlink('./docs/blog2.txt', () => {
-    console.log("file deleted");
-})
+if (fs.existsSync('./docs/deleteme.txt')) {
+    fs.unlink('./docs/deleteme.txt', (err) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log("file deleted");
+    });
+}
